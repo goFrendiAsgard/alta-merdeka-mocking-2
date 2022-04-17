@@ -27,6 +27,8 @@ docker-compose push
 [source](https://thomasventurini.com/articles/install-docker-and-compose-in-ubuntu/)
 
 ```bash
+ssh -i <key.pem> ubuntu@public-ip
+
 sudo apt-get update \
 && sudo apt-get install \
     apt-transport-https \
@@ -61,7 +63,7 @@ sudo chmod 777 /var/run/docker.sock
 ```bash
 cd ..
 # sesuaikan keypair nya (i.e: laptop.pem)
-rsync -r -e "ssh -i ~/laptop.pem" merdekaMock2 ubuntu@54.179.163.193:/home/ubuntu/app
+rsync -r -e "ssh -i ~/laptop.pem" merdekaMock2 ubuntu@54.179.163.193:/home/ubuntu
 ```
 
 # Run docker compose on server
@@ -69,4 +71,12 @@ rsync -r -e "ssh -i ~/laptop.pem" merdekaMock2 ubuntu@54.179.163.193:/home/ubunt
 ```bash
 docker-compose up -d
 ```
+
+# Set up Github action
+
+Create secret
+
+![](secret.png)
+
+![](host%20secret.png)
 
