@@ -4,6 +4,7 @@ import (
 	"merdeka/controller"
 	"merdeka/model"
 	"merdeka/service"
+	"net/http"
 	"os"
 
 	"github.com/labstack/echo/v4"
@@ -31,6 +32,9 @@ func main() {
 
 	ps := service.NewDBPersonService(db)
 	pc := controller.NewPersonController(ps)
+	e.GET("/", func(c echo.Context) error {
+		return c.String(http.StatusOK, "Hello World")
+	})
 	e.GET("/persons", pc.Get)  // mendapatkan persons
 	e.POST("/persons", pc.Add) // menambah person
 	e.Logger.Fatal(e.Start(":" + port))
