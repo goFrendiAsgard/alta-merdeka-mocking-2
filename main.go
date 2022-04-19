@@ -33,7 +33,7 @@ func main() {
 	ps := service.NewDBPersonService(db)
 	pc := controller.NewPersonController(ps)
 	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Hello World")
+		return c.String(http.StatusOK, "Hello World 🌏")
 	})
 	e.GET("/persons", pc.Get)  // mendapatkan persons
 	e.POST("/persons", pc.Add) // menambah person
