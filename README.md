@@ -27,6 +27,7 @@ docker-compose push
 [source](https://thomasventurini.com/articles/install-docker-and-compose-in-ubuntu/)
 
 ```bash
+sudo chmod 700 <key.pem>
 ssh -i <key.pem> ubuntu@public-ip
 
 sudo apt-get update \
@@ -74,9 +75,34 @@ docker-compose up -d
 
 # Set up Github action
 
-Create secret
+* Buat EC2 instance
+
+* Set security group's inbound rule untuk open port 8080 (atau sesuai definisi di docker-compose)
+
+* Masuk ke EC2
+
+* Install docker + docker-compose (lihat section sebelumnya)
+
+* Buat SSH key: `ssh-keygen && cat ~/.ssh/id_rsa.pub`
+
+* Connect kan ssh key di EC2 ke github
+
+  ![](add%20ssh%20key.png)
+
+* Lakukan git clone
+
+```bash
+cd ~
+git clone git@github.com:goFrendiAsgard/alta-merdeka-mocking-2.git
+cd alta-merdeka-mocking-2
+git pull origin master
+```
+
+* Create secret
 
 ![](secret.png)
 
 ![](host%20secret.png)
+
+
 
