@@ -21,4 +21,4 @@ jobs:
           cd ~/alta-merdeka-mocking-2
           git pull origin master
           docker-compose down
-          docker-compose up -d
+          docker-compose up --build -d
